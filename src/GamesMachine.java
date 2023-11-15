@@ -1,3 +1,5 @@
 public class GamesMachine {
-    System.out.println("HELP");
+    private String machinename, manufacturer, description, type, media;
+    private int initalLaunchYear;
+
 }
