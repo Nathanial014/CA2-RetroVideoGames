@@ -6,16 +6,16 @@ public class Game {
 
     private String name, publisher, description, originalDeveloper, gamesMachine, image;
 
-    public int getId() {
+    public int getID() {
         return id;
     }
 
-    public void setId(String id) {
-        int tempId = 0;
+    public void setID(String id) {
+        int tempID = 0;
         for (int i = 0; i < id.length(); i++) {
-            tempId += id.charAt(i);
+            tempID += id.charAt(i);
         }
-        this.id = tempId;
+        this.id = tempID;
     }
 
     public String getName() {
@@ -80,7 +80,7 @@ public class Game {
     }
 
     public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String image){
-        setId(name);
+        setID(name);
         setName(name);
         setPublisher(publisher);
         setDescription(description);

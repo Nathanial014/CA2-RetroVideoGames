@@ -25,11 +25,19 @@ public class CuckooHash<T> {
 
     public String displayElements(){
         String str = "";
-        for(int t=0;t<hashTable.length;t++)
-            for(int i=0;i<hashTable[t].length;i++)
-                if(hashTable[t][i]!=null)
-                    str += "\n"+hashTable[t][i];
+        for (T[] ts : hashTable)
+            for (T t : ts)
+                if (t != null)
+                    str += "\n" + t;
         return str;
+    }
+
+    public String search(String name){
+        for (T[] ts : hashTable)
+            for (T t : ts)
+                if (t != null && t.toString().contains(name))
+                    return t.toString();
+        return null;
     }
 
     public void add(T item) {
