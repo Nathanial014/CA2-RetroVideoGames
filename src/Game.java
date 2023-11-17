@@ -1,17 +1,22 @@
+import org.jetbrains.annotations.NotNull;
+
 public class Game {
-    private String name;
 
-    private String publisher;
+    private int id, yearOfRelease;
 
-    private String description;
+    private String name, publisher, description, originalDeveloper, gamesMachine, image;
 
-    private String originalDeveloper;
+    public int getId() {
+        return id;
+    }
 
-    private String gamesMachine;
-
-    private int yearOfRelease;
-
-    private String image;
+    public void setId(String id) {
+        int tempId = 0;
+        for (int i = 0; i < id.length(); i++) {
+            tempId += id.charAt(i);
+        }
+        this.id = tempId;
+    }
 
     public String getName() {
         return name;
@@ -75,6 +80,7 @@ public class Game {
     }
 
     public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String image){
+        setId(name);
         setName(name);
         setPublisher(publisher);
         setDescription(description);
@@ -87,7 +93,8 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", description='" + description + '\'' +
                 ", originalDeveloper='" + originalDeveloper + '\'' +
