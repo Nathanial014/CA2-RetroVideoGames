@@ -8,7 +8,7 @@ public class Menu {
         System.out.println(game.displayHashTables());
         System.out.println(game.displayElements());
 
-        //Games machine needs a getID() method for now to work.
+        //Games machine needs a getID() and setID() method for now to work.
         /*CuckooHash gamesMachine = new CuckooHash<GamesMachine>(3, 15, k->k.getId()%10,k->(k.getId()*13)%10,k->((k.getId()*19)/2)%10);
         gamesMachine.add(new GamesMachine("machineName", "manufacturer", "description", "type", "media", 2003, 19.99, "image"));
         gamesMachine.add(new GamesMachine("machineName2", "manufacturer2", "description2", "type2", "media2", 2003, 19.99, "image2"));
