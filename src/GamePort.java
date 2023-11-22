@@ -3,7 +3,19 @@ public class GamePort {
     private int releaseYearOfPort;
     private String coverArt;
 
-    public GamePort(String originalGamePort, String newGameMachinePortTo, String portDeveloper, int releaseYearOfPort, String coverArt) {
+    private int id;
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        int tempID = id;
+        this.id = tempID;
+    }
+
+    public GamePort(int id, String originalGamePort, String newGameMachinePortTo, String portDeveloper, int releaseYearOfPort, String coverArt) {
+        setID(id);
         setOriginalGamePort(originalGamePort);
         setNewGameMachinePortTo(newGameMachinePortTo);
         setPortDeveloper(portDeveloper);

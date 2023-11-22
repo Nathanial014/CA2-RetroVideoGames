@@ -4,7 +4,19 @@ public class GamesMachine {
     private double initialPrice;
     private String image;
 
+    private int id;
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        int tempID = id;
+        this.id = tempID;
+    }
+
     public GamesMachine(String machineName, String manufacturer, String description, String type, String media, int initialLaunchYear, double initialPrice, String image) {
+        setID(id);
         setmachineName(machineName);
         setManufacturer(manufacturer);
         setDescription(description);
