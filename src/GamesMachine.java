@@ -3,20 +3,27 @@ public class GamesMachine {
     private int initialLaunchYear;
     private double initialPrice;
     private String image;
-
     private int id;
 
-    public int getID() {
+    /* private void addGamesMachine(GamesMachine gamesMachine){
+        gamesMachine.add(gamesMachine);
+    } */
+
+
+    public int getId() {
         return id;
     }
 
-    public void setID(int id) {
-        int tempID = id;
+    public void setId(String id) {
+        int tempID = 0;
+        for (int i = 0; i < id.length(); i++) {
+            tempID += id.charAt(i);
+        }
         this.id = tempID;
     }
 
     public GamesMachine(String machineName, String manufacturer, String description, String type, String media, int initialLaunchYear, double initialPrice, String image) {
-        setID(id);
+        setId(machineName);
         setmachineName(machineName);
         setManufacturer(manufacturer);
         setDescription(description);
@@ -104,6 +111,7 @@ public class GamesMachine {
                 ", image='" + image + '\n' +
                 '}';
     }
+
     public static void main(String[] args) {
         // Example usage
         GamesMachine gameConsole = new GamesMachine("ConsoleX", "TechCo", "Description of ConsoleX",
