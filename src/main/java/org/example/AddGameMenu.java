@@ -12,7 +12,7 @@ public class AddGameMenu {
     @FXML
     private TextArea description;
 
-    CuckooHash game = new CuckooHash<Game>(3, 15, k->k.getID()%15,k->(k.getID()*13)%15,k->((k.getID()*19)/2)%15);
+    CuckooHash game = new CuckooHash<Game>(3, 15, k->k.getId()%15,k->(k.getId()*13)%15,k->((k.getId()*19)/2)%15);
 
     //game.add(new Game(name.getText(), publisher.getText(), description.getText(), originalDeveloper.getText(), gamesMachine.getText(), Integer.parseInt(yearOfRelease.getText()), coverArt.getText()));
 

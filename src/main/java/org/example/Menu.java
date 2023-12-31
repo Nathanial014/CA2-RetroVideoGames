@@ -1,69 +1,91 @@
 package org.example;
 
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+
+import java.io.*;
+
+import com.thoughtworks.xstream.XStream;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+
 public class Menu {
-    public static void main (String[] args) {
-        CuckooHash game = new CuckooHash<Game>(3, 15, k->k.getID()%15,k->(k.getID()*13)%15,k->((k.getID()*19)/2)%15);
-        game.add(new Game("name2", "publisher2",  "description2", "originalDeveloper2", "gamesMachine2", 20369, "image2"));
-        game.add(new Game("name1", "publisher1",  "description1", "originalDeveloper1", "gamesMachine1", 20031, "image1"));
-        game.add(new Game("name7", "publisher1",  "description1", "originalDeveloper1", "gamesMachine1", 20031, "image1"));
-        game.add(new Game("name7", "publisher1",  "description1", "originalDeveloper1", "gamesMachine1", 20031, "image1"));
-        System.out.println(game.displayHashTables());       //Display entire table
-        System.out.println(game.displayElements());         //Display just the elements in game
-        System.out.println(game.search("name2"));     //search for a game called name2
 
+    @FXML
+    private TextField machineName, manufacturer, type, media, initialLaunchYear, initialPrice, image, name, publisher, originalDeveloper, gamesMachine, coverArt, yearOfRelease;
 
-        //Games machine currently needs a getID() and setID() method for the following code to work.
+    @FXML
+    private TextArea gamesMachineDescription, gameDescription;
 
-        CuckooHash gamesMachine = new CuckooHash<GamesMachine>(3, 15, k->k.getId()%10,k->(k.getId()*13)%10,k->((k.getId()*19)/2)%10);
-        gamesMachine.add(new GamesMachine("machineName", "manufacturer", "description", "type", "media", 2003, 19.99, "image"));
-        gamesMachine.add(new GamesMachine("machineName2", "manufacturer2", "description2", "type2", "media2", 2003, 19.99, "image2"));
-        gamesMachine.add(new GamesMachine("machineName2", "manufacturer2", "description2", "type2", "media2", 2003, 19.99, "image2"));
-        System.out.println(gamesMachine.displayHashTables());
-        System.out.println(gamesMachine.displayElements());
-        System.out.println(game.search("machineName2"));
+    @FXML
+    private ListView<String> gamesMachineView;
 
-        CuckooHash gamePort = new CuckooHash<GamePort>(3,15, k->k.getId()%10,k->(k.getId()*13)%10,k->((k.getId()*19)/2)%10);
-        gamePort.add(new GamePort("PS3","PS4", "Infinity Ward", 2017, "placeholder-image3"));
-        gamePort.add(new GamePort("PS2","PS5", "Rockstar Games", 2022, "placeholder-image34"));
-        gamePort.add(new GamePort("Xbox","PC", "SEGA", 2009, "placeholder-image47"));
-        gamePort.add(new GamePort("Nintendo 64","PC", "Funny Games", 2020, "placeholder-image1"));
-        System.out.println(gamePort.displayHashTables());
-        System.out.println(gamePort.displayElements());
+    @FXML
+    private ListView<String> gamesView;
 
-        // Create an instance of a game port and add games
-        GamePort gamePort1 = new GamePort("PS1", "PS2", "Activision", 2017, "coverart");
-        System.out.println(gamePort1);
-        /*gamePort1.addGame(game1);
-        gamePort1.addGame(game2);*/
+    private File file;
 
-        // Create an instance of a game machine and add game ports
-        /*GameMachine gameMachine = new GameMachine();
-        gameMachine.addGamePort(gamePort1);
+    CuckooHash gamesMachineHash = new CuckooHash<GamesMachine>(7, 15, k->k.getId()%15,k->(k.getId()*13)%15,k->((k.getId()*19)/2)%15,k->(k.getId()*17)%15,k->(k.getId()+7)%15,k->(k.getId()*k.getId()+12)%15,k->(k.getId()*3+5)%15);
 
-        // Print the current state of the game machine
-        printGameMachineState(gameMachine);
-
-        // Delete a game from the game port
-        gamePort1.deleteGame(game1);
-
-        // Print the updated state
-        printGameMachineState(gameMachine);
-
-        // Delete a game port from the game machine
-        gameMachine.deleteGamePort(gamePort1);
-
-        // Print the final state
-        printGameMachineState(gameMachine);
-
-        private static void printGameMachineState(GamesMachine gamesMachine) {
-            System.out.println("Current state of the game machine:");
-            for (GamePort gamePort : gameMachine.getGamePorts()) {
-                System.out.println("Game Port:");
-                for (Game game : gamePort.getOriginalGamePort) {
-                    System.out.println("- " + game.getName());
-                }
-            }
-            System.out.println();
-        }*/
+    CuckooHash gameHash = new CuckooHash<Game>(7, 15, k->k.getId()%15,k->(k.getId()*13)%15,k->((k.getId()*19)/2)%15,k->(k.getId()*17)%15,k->(k.getId()+7)%15,k->(k.getId()*k.getId()+12)%15,k->(k.getId()*3+5)%15);
+    public void initialize() {
+//        load();
+//        gamesMachineListView.getItems().addAll(file.toString());
+        this.file = new File("retroVideoGames");
     }
+
+    public void addGamesMachine() {
+        gamesMachineHash.add(new GamesMachine(machineName.getText(), manufacturer.getText(),gamesMachineDescription.getText(), type.getText(), media.getText(), Integer.parseInt(initialLaunchYear.getText()), Integer.parseInt(initialPrice.getText()), image.getText()));
+        gamesMachineView.getItems().add(machineName.getText());
+        machineName.clear();
+        manufacturer.clear();
+        type.clear();
+        media.clear();
+        initialLaunchYear.clear();
+        initialPrice.clear();
+        image.clear();
+        gamesMachineDescription.clear();
+    }
+
+    public void addGame() {
+        gameHash.add(new Game(name.getText(), publisher.getText(),gameDescription.getText(), originalDeveloper.getText(), gamesMachine.getText(), Integer.parseInt(yearOfRelease.getText()), coverArt.getText()));
+        gamesView.getItems().add(name.getText());
+        name.clear();
+        publisher.clear();
+        gameDescription.clear();
+        originalDeveloper.clear();
+        gamesMachine.clear();
+        yearOfRelease.clear();
+        coverArt.clear();
+    }
+
+    public void save() throws Exception {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter(file));
+        out.writeObject(gamesMachine);
+        out.close();
+    }
+
+    @SuppressWarnings("unchecked")
+    public void load() throws Exception {
+        //list of classes that you wish to include in the serialisation, separated by a comma
+        Class<?>[] classes = new Class[]{GamesMachine.class, Game.class};
+
+        //setting up the xstream object with default security and the above classes
+        XStream xstream = new XStream(new DomDriver());
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
+
+        //doing the actual serialisation to an XML file
+        ObjectInputStream in = xstream.createObjectInputStream(new FileReader(file));
+        gamesMachineHash = (CuckooHash<Game>) in.readObject();
+        in.close();
+    }
+
+    public String fileName(){
+        return this.file.toString();
+    }
+
 }

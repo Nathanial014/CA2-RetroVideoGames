@@ -6,11 +6,11 @@ public class Game {
 
     private String name, publisher, description, originalDeveloper, gamesMachine, coverArt;
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 
-    public void setID(String id) {
+    public void setId(String id) {
         int tempID = 0;
         for (int i = 0; i < id.length(); i++) {
             tempID += id.charAt(i);
@@ -79,16 +79,8 @@ public class Game {
         this.coverArt = coverArt;
     }
 
-    public int getInitialPrice() {
-        return initialPrice;
-    }
-
-    public void setInitialPrice(int initialPrice) {
-        this.initialPrice = initialPrice;
-    }
-
     public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String coverArt){
-        setID(name);
+        setId(name);
         setName(name);
         setPublisher(publisher);
         setDescription(description);
