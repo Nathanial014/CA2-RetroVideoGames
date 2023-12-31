@@ -1,6 +1,8 @@
-public class Menu {
+package org.example;
+
+public class Test {
     public static void main (String[] args) {
-        CuckooHash game = new CuckooHash<Game>(3, 15, k->k.getID()%15,k->(k.getID()*13)%15,k->((k.getID()*19)/2)%15);
+        CuckooHash game = new CuckooHash<Game>(3, 15, k->k.getId()%15,k->(k.getId()*13)%15,k->((k.getId()*19)/2)%15);
         game.add(new Game("name2", "publisher2",  "description2", "originalDeveloper2", "gamesMachine2", 20369, "image2"));
         game.add(new Game("name1", "publisher1",  "description1", "originalDeveloper1", "gamesMachine1", 20031, "image1"));
         game.add(new Game("name7", "publisher1",  "description1", "originalDeveloper1", "gamesMachine1", 20031, "image1"));
@@ -29,12 +31,13 @@ public class Menu {
         System.out.println(gamePort.displayElements());
 
         // Create an instance of a game port and add games
-        /*GamePort gamePort1 = new GamePort(173712);
-        gamePort1.addGame(game1);
-        gamePort1.addGame(game2);
+        GamePort gamePort1 = new GamePort("PS1", "PS2", "Activision", 2017, "coverart");
+        System.out.println(gamePort1);
+        /*gamePort1.addGame(game1);
+        gamePort1.addGame(game2);*/
 
         // Create an instance of a game machine and add game ports
-        GameMachine gameMachine = new GameMachine();
+        /*GameMachine gameMachine = new GameMachine();
         gameMachine.addGamePort(gamePort1);
 
         // Print the current state of the game machine

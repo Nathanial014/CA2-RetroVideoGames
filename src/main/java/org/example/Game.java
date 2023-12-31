@@ -1,15 +1,16 @@
+package org.example;
 
 public class Game {
 
     private int id, yearOfRelease;
 
-    private String name, publisher, description, originalDeveloper, gamesMachine, image;
+    private String name, publisher, description, originalDeveloper, gamesMachine, coverArt;
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 
-    public void setID(String id) {
+    public void setId(String id) {
         int tempID = 0;
         for (int i = 0; i < id.length(); i++) {
             tempID += id.charAt(i);
@@ -70,23 +71,23 @@ public class Game {
         }
     }
 
-    public String getImage() {
-        return image;
+    public String getCoverArt() {
+        return coverArt;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setCoverArt(String coverArt) {
+        this.coverArt = coverArt;
     }
 
-    public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String image){
-        setID(name);
+    public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String coverArt){
+        setId(name);
         setName(name);
         setPublisher(publisher);
         setDescription(description);
         setOriginalDeveloper(originalDeveloper);
         setGamesMachine(gamesMachine);
         setYearOfRelease(yearOfRelease);
-        setImage(image);
+        setCoverArt(coverArt);
     }
 
     @Override
@@ -99,7 +100,7 @@ public class Game {
                 ", originalDeveloper='" + originalDeveloper + '\'' +
                 ", gamesMachine='" + gamesMachine + '\'' +
                 ", yearOfRelease=" + yearOfRelease +
-                ", image='" + image + '\'' +
+                ", coverArt='" + coverArt + '\'' +
                 '}';
     }
 }

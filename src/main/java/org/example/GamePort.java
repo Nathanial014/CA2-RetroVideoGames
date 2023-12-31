@@ -1,3 +1,5 @@
+package org.example;
+
 public class GamePort {
     private String originalGamePort, newGameMachinePortTo, portDeveloper;
     private int releaseYearOfPort;
@@ -64,5 +66,17 @@ public class GamePort {
 
     public void setCoverArt(String coverArt) {
         this.coverArt = coverArt;
+    }
+
+    @Override
+    public String toString() {
+        return "GamePort{" +
+                "originalGamePort='" + originalGamePort + '\'' +
+                ", newGameMachinePortTo='" + newGameMachinePortTo + '\'' +
+                ", portDeveloper='" + portDeveloper + '\'' +
+                ", releaseYearOfPort=" + releaseYearOfPort +
+                ", coverArt='" + coverArt + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

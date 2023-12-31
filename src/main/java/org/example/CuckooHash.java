@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.function.Function;
 
 public class CuckooHash<T> {

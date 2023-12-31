@@ -1,3 +1,5 @@
+package org.example;
+
 public class GamesMachine {
     private String machineName, manufacturer, description, type, media;
     private int initialLaunchYear;
@@ -8,7 +10,6 @@ public class GamesMachine {
     /* private void addGamesMachine(GamesMachine gamesMachine){
         gamesMachine.add(gamesMachine);
     } */
-
 
     public int getId() {
         return id;
