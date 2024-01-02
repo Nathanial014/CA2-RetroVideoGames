@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Comparator;
-import java.util.List;
 
 public class QuickSort {
 //
