@@ -23,9 +23,9 @@ public class GamesMachine {
         this.id = tempID;
     }
 
-    public GamesMachine(String machineName, String manufacturer, String description, String type, String media, int initialLaunchYear, double initialPrice, String image) {
+    public GamesMachine(String machineName, String manufacturer, String description, String type, String media, String initialLaunchYear, String initialPrice, String image) {
         setId(machineName);
-        setmachineName(machineName);
+        setMachineName(machineName);
         setManufacturer(manufacturer);
         setDescription(description);
         setType(type);
@@ -35,11 +35,11 @@ public class GamesMachine {
         setImage(image);
     }
 
-    public String getmachineName() {
+    public String getMachineName() {
         return machineName;
     }
 
-    public void setmachineName(String machineName) {
+    public void setMachineName(String machineName) {
         this.machineName = machineName;
     }
 
@@ -79,16 +79,26 @@ public class GamesMachine {
         return initialLaunchYear;
     }
 
-    public void setInitialLaunchYear(int initalLaunchYear) {
-        this.initialLaunchYear = initalLaunchYear;
+    public void setInitialLaunchYear(String initialLaunchYear) {
+        try {
+            this.initialLaunchYear = Integer.parseInt(initialLaunchYear);
+        }
+        catch (NumberFormatException nfe) {
+            this.initialLaunchYear = -1;
+        }
     }
 
     public double getInitialPrice() {
         return initialPrice;
     }
 
-    public void setInitialPrice(double initialPrice) {
-        this.initialPrice = initialPrice;
+    public void setInitialPrice(String initialPrice) {
+        try {
+            this.initialPrice = Double.parseDouble(initialPrice);
+        }
+        catch (NumberFormatException nfe){
+            this.initialPrice = -1.0;
+        }
     }
 
     public String getImage() {
@@ -116,10 +126,10 @@ public class GamesMachine {
     public static void main(String[] args) {
         // Example usage
         GamesMachine gameConsole = new GamesMachine("ConsoleX", "TechCo", "Description of ConsoleX",
-                "Gaming Console", "Digital", 2022, 399.99, "https://example.com/consolex.jpg");
+                "Gaming Console", "Digital", "2022", "399.99", "https://example.com/consolex.jpg");
 
         // Accessing fields using getters
-        System.out.println("Machine Name: " + gameConsole.getmachineName());
+        System.out.println("Machine Name: " + gameConsole.getMachineName());
         System.out.println("Manufacturer: " + gameConsole.getManufacturer());
         System.out.println("Description: " + gameConsole.getDescription());
         System.out.println("Type: " + gameConsole.getType());

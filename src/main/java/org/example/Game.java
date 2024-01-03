@@ -62,9 +62,9 @@ public class Game {
         return yearOfRelease;
     }
 
-    public void setYearOfRelease(int yearOfRelease) {
+    public void setYearOfRelease(String yearOfRelease) {
         try {
-            this.yearOfRelease = yearOfRelease;
+            this.yearOfRelease = Integer.parseInt(yearOfRelease);
         }
         catch(Exception e){
             this.yearOfRelease = -1;
@@ -79,7 +79,7 @@ public class Game {
         this.coverArt = coverArt;
     }
 
-    public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, int yearOfRelease, String coverArt){
+    public Game(String name, String publisher, String description, String originalDeveloper, String gamesMachine, String yearOfRelease, String coverArt){
         setId(name);
         setName(name);
         setPublisher(publisher);

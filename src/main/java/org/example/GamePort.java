@@ -19,7 +19,7 @@ public class GamePort {
         this.id = tempID;
     }
 
-    public GamePort(String originalGamePort, String newGameMachinePortTo, String portDeveloper, int releaseYearOfPort, String coverArt) {
+    public GamePort(String originalGamePort, String newGameMachinePortTo, String portDeveloper, String releaseYearOfPort, String coverArt) {
         setID(originalGamePort);
         setOriginalGamePort(originalGamePort);
         setNewGameMachinePortTo(newGameMachinePortTo);
@@ -56,8 +56,13 @@ public class GamePort {
         return releaseYearOfPort;
     }
 
-    public void setReleaseYearOfPort(int releaseYearOfPort) {
-        this.releaseYearOfPort = releaseYearOfPort;
+    public void setReleaseYearOfPort(String releaseYearOfPort) {
+        try {
+            this.releaseYearOfPort = Integer.parseInt(releaseYearOfPort);
+        }
+        catch (NumberFormatException nfe) {
+            this.releaseYearOfPort = -1;
+        }
     }
 
     public String getCoverArt() {
